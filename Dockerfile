@@ -1,5 +1,5 @@
 ##= BUILDER =##
-FROM crystallang/crystal:latest-alpine As builder
+FROM --platform=$BUILDPLATFORM crystallang/crystal:latest-alpine AS builder
 
 WORKDIR /noir
 COPY . .
@@ -22,5 +22,8 @@ USER 2:2
 
 COPY --from=builder /noir/bin/noir /usr/local/bin/noir
 COPY --from=builder /etc/ssl/cert.pem /etc/ssl/
+
+RUN uname -a
+RUN noir -v
 
 CMD ["noir"]
