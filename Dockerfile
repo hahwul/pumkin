@@ -1,5 +1,4 @@
-##= BUILDER =##
-FROM --platform=$BUILDPLATFORM crystallang/crystal:latest-alpine AS builder
+FROM 84codes/crystal:latest-alpine AS builder
 
 WORKDIR /noir
 COPY . .
